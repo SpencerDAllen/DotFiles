@@ -1,0 +1,13 @@
+(provide 'my-org-mode)
+(add-hook 'org-mode-hook 'turn-on-font-lock)
+(add-hook 'org-mode-hook 'turn-on-predictive-mode)
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+(setq org-todo-keywords
+  '((sequence "TODO" "CANCELED" "|" "IN PROCESS" "TESTING" "DONE" "DELEGATED")))
+(when (string= system-type "gnu/linux")
+  (require 'org-latex)
+  (setq org-export-latex-listings 'minted)
+  ;; (add-to-list 'org-export-latex-packages-alist '("" "minted"))
+  (setq org-src-fontify-natively t))

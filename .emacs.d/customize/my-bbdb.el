@@ -1,0 +1,6 @@
+(provide 'my-bbdb)
+(require 'bbdb)
+(bbdb-initialize 'gnus 'message)
+(bbdb-insinuate-gnus)
+(setq bbdb/mail-auto-create-p t)
+(setq bbdb/news-auto-create-p 'nil)

@@ -1,0 +1,5 @@
+(provide 'my-ac-mode)
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp//ac-dict")
+(ac-config-default)

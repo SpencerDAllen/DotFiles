@@ -43,11 +43,11 @@ TEXT
     ${if_match ${cpu}<90}"\#17B2FF"${else}"\#ff0000"${endif} },
   { "full_text" : "RAM ${memperc}%" , "color" :
     ${if_match ${memperc}<90}"\#17B2FF"${else}"\#ff0000"${endif} },
-  { "full_text" : "CPU0 ${exec sensors | grep 'Core 1' | cut -c16-17 | sed -e '2d' }°C" , "color" :
-    ${if_match ${exec sensors | grep 'Core 1' | cut -c16-17 | sed -e '2d' }<84}"\#17B2FF"${else}"\#ff0000"${endif} },
-  { "full_text" : "CPU1 ${exec sensors | grep 'Core 1' | cut -c16-17 | sed -e '1d' }°C" , "color" :
-    ${if_match ${exec sensors | grep 'Core 1' | cut -c16-17 | sed -e '1d' }<84}"\#17B2FF"${else}"\#ff0000"${endif} },
-  { "full_text" : "GPU ${execi 30  nvidia-settings -q gpucoretemp -t | sed -e '$d'}°C" , "color" :
+  { "full_text" : "CPU0 ${exec sensors -f | grep 'Core 0' | cut -c15-19 | sed -e '2d' }°F" , "color" :
+    ${if_match ${exec sensors -f | grep 'Core 0' | cut -c15-19 | sed -e '2d' }<183}"\#17B2FF"${else}"\#ff0000"${endif} },
+  { "full_text" : "CPU1 ${exec sensors -f | grep 'Core 1' | cut -c15-19 | sed -e '1d' }°F" , "color" :
+    ${if_match ${exec sensors -f | grep 'Core 1' | cut -c15-19 | sed -e '1d' }<183}"\#17B2FF"${else}"\#ff0000"${endif} },
+  { "full_text" : "GPU ${execi 10  nvidia-settings -q GPUCoreTemp | awk '{if (NR==2) {print ($4*9)/5+32}}'}°F" , "color" :
     ${if_match ${execi 30 nvidia-settings -q gpucoretemp -t | sed -e '$d'}<80}"\#17B2FF"${else}"\#ff0000"${endif} },
   { "full_text" : "eth0 ${addr enp15s0}" , "color" : "\#17B2FF" },
   { "full_text" : "/ ${fs_free /} Free" , "color" : "\#17B2FF" },
