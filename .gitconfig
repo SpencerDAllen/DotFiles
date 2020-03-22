@@ -1,0 +1,27 @@
+[user]
+	name = Allen, Spencer
+	email = MrSpencerAllen@gmail.com
+[fetch]
+	prune = true
+[core]
+	autocrlf = input
+[color]
+	ui = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	cl = clean -xfd
+	pl = log --pretty=format:\"%h %C(white)-%an, %C(green)%ar %C(white): %C(reset)%s\"
+	co = checkout
+	cob = checkout -b
+	br = branch
+	push = push -u
+[pull]
+	rebase = false
+[rebase]
+	autoStash = false
+[branch]
+	autosetupmerge = true

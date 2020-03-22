@@ -22,7 +22,6 @@ promptinit
 PROMPT=$'%{\e[0;31m%}(%{\e[32m%}%n%{\e[0;31m%}@%{\e[32m%}%m%{\e[0;31m%})(%{\e[32m%}%W %T%{\e[0;31m%})%{\e[0m%}%# '
 RPROMPT=$'%{\e[0;31m%}(%{\e[32m%}%~%{\e[0;31m%})%{\e[0m%}'
 
-
 zstyle ':completion:*' menu select
 
 # create a zkbd compatible hash;
@@ -64,6 +63,11 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
+
+#load Git completion
+zstyle ':competion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+autoload -Uz compinit && compinit
 
 source $HOME/.aliases
 

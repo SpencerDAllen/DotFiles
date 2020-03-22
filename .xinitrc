@@ -13,8 +13,8 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 sh ~/.fehbg &
-xhost local:boinc
 numlockx &
+udiskie &
 xset s off
 xset -dpms
 exec i3
